@@ -1,0 +1,23 @@
+services:
+  marp:
+    build: .
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+      - pnpm-store:/pnpm/store
+    ports:
+      - "5000:5000"
+    environment:
+      HOME: /tmp/home
+      XDG_CACHE_HOME: /tmp/.cache
+      COREPACK_HOME: /tmp/corepack
+    command: >
+      bash -lc "
+        pnpm install --store-dir=/pnpm/store &&
+        npm run start
+      "
+
+volumes:
+  pnpm-store:
+  node_modules:
