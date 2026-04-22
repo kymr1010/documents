@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "start": "PORT=5000 marp --server --theme-set ./themes --watch ./"
+    "start": "PORT=5000 marp --server --theme-set ./themes --watch ./",
+	"build:html": "marp --html --theme-set ./theme -I ./ -o ./dist",
+    "build:pdf": "marp ./*.md --pdf --theme-set ./theme --browser-path /usr/bin/chromium --no-sandbox -o docs/slides.pdf"
   },
 	"devDependencies": {
 		"@marp-team/marp-cli": "^4.2.3"
